@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yo‘qolgan va topilgan buyumlarni qidirish sayti">
+  <title>Topilmalar — Buyumingizni toping</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <header class="header">
+    <a class="logo" href="#">Topil<span>malar</span></a>
+    <button class="btn primary" id="openForm">+ E’lon berish</button>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <span class="eyebrow">O‘ZBEKISTON BO‘YLAB</span>
+      <h1>Yo‘qotdingizmi yoki topdingizmi?</h1>
+      <p>Yo‘qolgan buyumlarni izlang yoki topgan narsangiz haqida e’lon joylang.</p>
+
+      <div class="search">
+        <input id="q" type="search" placeholder="Buyum nomini yozing...">
+        <select id="city">
+          <option value="">Barcha shaharlar</option>
+          <option>Toshkent</option>
+          <option>Samarqand</option>
+          <option>Buxoro</option>
+          <option>Andijon</option>
+          <option>Farg‘ona</option>
+          <option>Namangan</option>
+          <option>Qarshi</option>
+          <option>Nukus</option>
+          <option>Boshqa</option>
+        </select>
+        <select id="category">
+          <option value="">Barcha kategoriyalar</option>
+          <option>Hujjatlar</option>
+          <option>Telefon</option>
+          <option>Kalitlar</option>
+          <option>Hamyon</option>
+          <option>Sumka</option>
+          <option>Hayvonlar</option>
+          <option>Elektronika</option>
+          <option>Boshqa</option>
+        </select>
+        <button class="btn primary" id="searchBtn">Qidirish</button>
+      </div>
+    </section>
+
+    <section class="benefits">
+      <div class="benefit"><span>🔎</span><div><b>Oson qidiruv</b><small>Buyum va shahar bo‘yicha</small></div></div>
+      <div class="benefit"><span>📷</span><div><b>Rasmli e’lonlar</b><small>Buyumni tezroq tanish</small></div></div>
+      <div class="benefit"><span>☎️</span><div><b>To‘g‘ridan-to‘g‘ri aloqa</b><small>Egasi bilan bog‘lanish</small></div></div>
+    </section>
+
+    <nav class="tabs">
+      <button class="tab active" data-type="all">Barchasi</button>
+      <button class="tab" data-type="lost">Yo‘qolgan buyumlar</button>
+      <button class="tab" data-type="found">Topilgan buyumlar</button>
+    </nav>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <h2>So‘nggi e’lonlar</h2>
+          <p id="count">E’lonlar ro‘yxati</p>
+        </div>
+        <button class="btn outline" id="openForm2">+ E’lon qo‘shish</button>
+      </div>
+      <div id="list" class="grid"></div>
+    </section>
+
+    <section class="callout">
+      <div>
+        <h2>Biror narsa topib oldingizmi?</h2>
+        <p>Egasi buyumini topishiga yordam bering. Bepul e’lon joylang.</p>
+      </div>
+      <button class="btn primary" id="openForm3">E’lon berish →</button>
+    </section>
+  </main>
+
+  <dialog id="formDialog">
+    <form id="adForm">
+      <div class="dialog-heading">
+        <div>
+          <h2>Yangi e’lon</h2>
+          <p>Buyum haqida ma’lumot kiriting.</p>
+        </div>
+        <button type="button" id="cancelForm" class="close-btn" aria-label="Yopish">✕</button>
+      </div>
+
+      <label>E’lon turi
+        <select name="type" required>
+          <option value="lost">Yo‘qolgan</option>
+          <option value="found">Topilgan</option>
+        </select>
+      </label>
+
+      <label>Buyum nomi
+        <input name="title" required maxlength="90" placeholder="Masalan: qora hamyon">
+      </label>
+
+      <label>Kategoriya
+        <select name="category" required>
+          <option>Hujjatlar</option>
+          <option>Telefon</option>
+          <option>Kalitlar</option>
+          <option>Hamyon</option>
+          <option>Sumka</option>
+          <option>Hayvonlar</option>
+          <option>Elektronika</option>
+          <option>Boshqa</option>
+        </select>
+      </label>
+
+      <label>Shahar
+        <select name="city" required>
+          <option value="">Shaharni tanlang</option>
+          <option>Toshkent</option>
+          <option>Samarqand</option>
+          <option>Buxoro</option>
+          <option>Andijon</option>
+          <option>Farg‘ona</option>
+          <option>Namangan</option>
+          <option>Qarshi</option>
+          <option>Nukus</option>
+          <option>Boshqa</option>
+        </select>
+      </label>
+
+      <label>Manzil yoki mo‘ljal
+        <input name="address" required maxlength="150" placeholder="Masalan: Chilonzor, metro yonida">
+      </label>
+
+      <label>Sana
+        <input name="date" type="date" required>
+      </label>
+
+      <label>Buyum tavsifi
+        <textarea name="description" required maxlength="1000" rows="3" placeholder="Buyumning rangi, belgisi va boshqa ma’lumotlar"></textarea>
+      </label>
+
+      <label>Telefon raqami
+        <input name="phone" type="tel" required maxlength="25" placeholder="+998 90 123 45 67">
+      </label>
+
+      <label>Buyum rasmi (ixtiyoriy)
+        <input name="photo" type="file" accept="image/*">
+      </label>
+
+      <div class="form-actions">
+        <button type="button" class="btn outline" id="cancelForm2">Bekor qilish</button>
+        <button type="submit" class="btn primary">E’lonni saqlash</button>
+      </div>
+    </form>
+  </dialog>
+
+  <footer>
+    <a class="logo footer-logo" href="#">Topil<span>malar</span></a>
+    <p>Yo‘qolgan buyumlar izsiz qolmasin.</p>
+    <small>© 2026 Topilmalar</small>
+  </footer>
+
+  <script>
+    document.getElementById("openForm3").addEventListener("click", function() {
+      document.getElementById("openForm").click();
+    });
+    document.getElementById("cancelForm").addEventListener("click", function() {
+      document.getElementById("formDialog").close();
+    });
+    document.getElementById("cancelForm2").addEventListener("click", function() {
+      document.getElementById("formDialog").close();
+    });
+  </script>
+</body>
+</html>
